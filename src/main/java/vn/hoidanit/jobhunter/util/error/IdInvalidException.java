@@ -1,4 +1,4 @@
-package vn.hoidanit.jobhunter.service.error;
+package vn.hoidanit.jobhunter.util.error;
 
 //khai báo hàm exceptions trước
 public class IdInvalidException extends Exception {

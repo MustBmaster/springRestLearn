@@ -36,6 +36,9 @@ public class FormatRestResponse implements ResponseBodyAdvice{
         //xảy ra 2 trường hợp: nếu các mã code trả về là nhở hơn 400 thì là ok, lơn hơn là lỗi
         RestResponse<Object> res = new RestResponse<Object>();//khai báo thực thể rest response
         res.setStatus(statusCode);//cài status code cho nó
+        if (body instanceof String) {
+            return body;
+        }
         //nếu lỗi
         if(statusCode>=400){
             // res.setError("Api call failed");//vì thuộc tính error kiểu string nên ép kiểu
