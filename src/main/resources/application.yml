@@ -38,3 +38,8 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+# cấu hình jwt gồm, 2 tham số: secret key để mã hoá và thời gian hết hạn của token
+hoidanit:
+  jwt:
+    base64-secret: MJ6i2JZpaUmX5IbEWGNKxlky+prUeUlrIX9Twxja9vkqr/3keOybYpFULyjdlnTM486FerKHXHjBeQcAWniZDA==
+    token-validity-in-seconds: 86400

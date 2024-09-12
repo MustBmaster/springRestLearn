@@ -25,3 +25,8 @@ Dự án này sử dụng gradle làm build tools, các cấu hình của nó n�
 # 4: Giải thích cách vận hành của Oauth
 -Sau khi đăng nhập, request sẽ gửi di tk/mk về tới server. Thông tin đó sẽ được đóng gói và gen ra 1 cái token. Backend sẽ authenticate cái token đó để kiểm tra quyền của user trong request đó. Sau đó, nếu xác thực thành công, authentication đó sẽ được lưu vào context để sử dụng trong các lời gọi request tiếp theo. Authentication đó sẽ được dùng để tạo ra 1 JWT token trả về cho user trong phần header
 -giải thích 1 chút về DTO: nó gần như là entity, nhưng nó chỉ bao gồm các thông tin ngắn gọn, getter và setter, không chứa logic nghiệp vụ. Mục đích của nó là đóng gói các dữ liệu sử dụng nhiều để giao tiếp giữa các tầng của java, nhằm đơn giản hóa và giảm số lượng lời gọi
+
+# 5: tạo key để mã hoá token
+cấu hình các tham số của security trong file yml
+đối với việc tạo secret key base 64, chạy lệnh này trong bash: openssl rand -base64 64
+các thay đổi và giải thích đã comment trong commit #6
