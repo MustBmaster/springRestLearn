@@ -30,3 +30,6 @@ Dự án này sử dụng gradle làm build tools, các cấu hình của nó n�
 cấu hình các tham số của security trong file yml
 đối với việc tạo secret key base 64, chạy lệnh này trong bash: openssl rand -base64 64
 các thay đổi và giải thích đã comment trong commit #6
+
+# 6: thêm filter bearer token cho api + handing exception
+-trong cấu hình filter chain, cho thêm bộ lọc cho bearer token cho endpoint, để khi gọi đến, với các enpoint cần ktra, nó sẽ ktra xem có token và token đó có hợp lệ không thì mới trả response
