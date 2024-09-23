@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,13 +17,14 @@ import vn.hoidanit.jobhunter.domain.RestResponse;
 @RestControllerAdvice
 public class GlobalException extends Exception{
     //@ExceptionHandler(value = IdInvalidException.class) //annotation này để khai báo exception và các giá trị trả về tương ứng
-    @ExceptionHandler(IdInvalidException.class) //viết thế này cho ngắn
-    public ResponseEntity<RestResponse<Object>> handleIdException(IdInvalidException idException) {
+    //@ExceptionHandler(IdInvalidException.class) //viết thế này cho ngắn
+    @ExceptionHandler(value =  {UsernameNotFoundException.class, BadCredentialsException.class})
+    public ResponseEntity<RestResponse<Object>> handleIdException(Exception ex) {
         // return ResponseEntity.badRequest().body(idException.getMessage());
         RestResponse<Object> res = new RestResponse<Object>();// thay thế lỗi này, thay vì trả về lỗi thông thường
         res.setStatus(HttpStatus.BAD_REQUEST.value());
-        res.setError(idException.getMessage());
-        res.setMessage("Id invalid");
+        res.setError(ex.getMessage());
+        res.setMessage("Wrong login info");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
     }
 
